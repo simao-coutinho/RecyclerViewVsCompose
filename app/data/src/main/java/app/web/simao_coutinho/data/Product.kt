@@ -1,6 +1,7 @@
 package app.web.simao_coutinho.data
 
 import androidx.annotation.DrawableRes
+import java.text.NumberFormat
 import kotlin.random.Random
 
 data class Product(
@@ -10,8 +11,13 @@ data class Product(
     val price: Double,
     @DrawableRes val image: Int
 ) {
+    fun formatedPrice(): String {
+        val currencyFormatter = NumberFormat.getCurrencyInstance()
+        return currencyFormatter.format(price)
+    }
+
     companion object {
-        fun getProducts() {
+        fun getProducts(): List<Product> {
             val products: MutableList<Product> = mutableListOf()
 
             products.add(
@@ -213,6 +219,8 @@ data class Product(
                     image = R.drawable.monitor
                 )
             )
+
+            return products
         }
     }
 }

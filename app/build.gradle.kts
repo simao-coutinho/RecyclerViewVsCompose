@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "app.web.simao_coutinho.lists"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "app.web.simao_coutinho.lists"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":app:data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

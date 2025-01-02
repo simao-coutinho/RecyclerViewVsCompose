@@ -2,11 +2,15 @@ package app.web.simao_coutinho.lists
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import app.web.simao_coutinho.data.Product
 import app.web.simao_coutinho.lists.databinding.ActivityMainBinding
 
@@ -27,10 +31,27 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val products = Product.getProducts()
+        var products = Product.getProducts()
+        val productAdapter = ProductAdapter { product: Product ->
+            Toast.makeText(
+                this@MainActivity,
+                "Product Clicked: ${product.name}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
-        binding.rvProducts.layoutManager = LinearLayoutManager(this)
-        binding.rvProducts.setHasFixedSize(true)
+        with(binding.rvProducts) {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            setHasFixedSize(true)
+            adapter = productAdapter
+        }
+
+        productAdapter.submitList(products)
+
+        binding.fabShuffle.setOnClickListener {
+            products = products.shuffled()
+            productAdapter.submitList(products)
+        }
 
     }
 }

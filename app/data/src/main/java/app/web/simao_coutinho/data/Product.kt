@@ -212,7 +212,7 @@ data class Product(
 
             products.add(
                 Product(
-                    id = 19,
+                    id = 20,
                     name = "Monitors",
                     description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus fermentum lacus, vitae vestibulum nunc accumsan id. Suspendisse eget neque efficitur, faucibus nisi quis, placerat odio.",
                     price = Random.nextDouble(0.0,100.0),

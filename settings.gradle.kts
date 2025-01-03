@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Lists"
 include(":app")
 include(":app:data")
+include(":app:compose")
